@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up | Log In</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+       <div class="title-text">
+          <div class="title signup">
+             SignUp
+          </div>
+       </div>
+       <br/>
+       <div class="form-container">
+          <div class="form-inner">
+            <form action="/sign_up" class="signup" method="post">
+               <label for="role">Choose your role:</label>
+               <select name="role" id="role" required>
+                     <option value="innovator">Innovator</option>
+                     <option value="investor">Investor</option>
+               </select>
+                <div class="field">
+                   <input type="email" placeholder="Email Address" required name="mailid" id="mailid">
+                </div>
+                <div class="field">
+                   <input type="password" placeholder="Password" id="password" required name="pass" id="pass">
+                </div>
+                <div class="field">
+                   <input type="password" placeholder="Confirm Password" id="confirm_password" required name="conpass" id="conpass">
+                </div>
+                <br/>
+                {% if not password_match %}
+                  <label style="color: red;">Passwords do not match. Please try again.</label>
+                {% endif %}
+                {% if email_exists %}
+                  <label style="color: red;">Email already exists. Please try again.</label>
+                {% endif %}
+                <div class="field btn">
+                   <div class="btn-layer"></div>
+                   <input type="submit" value="SignUp">
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+    <!-- <script src="style.js"></script> -->
+  </body>
+</html>

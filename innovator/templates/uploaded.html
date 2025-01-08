@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="topnav" >
+            <a class="active" href="/uploaded">Home</a>
+            <a href="/upload">Upload</a>
+            <a href="/log_out">Logout</a>
+            <a href="/about">About</a>
+        </div>
+        <div class="imgwrapper">
+            <form method="post">
+                <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="logo" class="logo"> 
+            <h1>
+                Uploded Documents
+            </h1>
+            <label>Here we find the documents uploaded</label>
+            <ul>
+                {% for item in items %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            </form>
+        </div>
+        <script src="{{ url_for('static', filename='nav.js') }}"></script>
+    </body>
+</html>

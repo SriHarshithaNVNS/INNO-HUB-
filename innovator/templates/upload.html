@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="wrapper">
+        </div>
+        <div class="topnav" >
+            <a href="/uploaded">Home</a>
+            <a class="active" href="/upload">Upload</a>
+            <a href="/log_out">Logout</a>
+            <a href="/about">About</a>
+        </div>
+        <div class="homewrapper">
+        <h1>Uploading Details</h1>
+        <br/>
+        <form method="post" enctype="multipart/form-data" >
+            {% if message %}
+                <h3>{{ message }}</h3><br/>
+            {% endif %}
+            <label>Name of the idea: </label>
+            <input type="text" name="name" id="name"/>
+            <br/><br/>
+            <label>Catogory:</label>
+            <input type="text" name="cat" id="cat"/>
+            <br/><br/>
+            <label>Give a brief description</label>
+            <br/>
+            <textarea cols="100" rows="10" placeholder="Enter your comment here" name="description" id="description"></textarea>
+            <br/><br/>
+            <label for="input">Choose a relevent video file:</label>
+            <input style="background: #0450d5;
+                color: white;
+                line-height: 1.2;
+                padding: 15px;
+                border-radius: 4px;
+                cursor: pointer;" type="file" id="video" name="video" accept="video/mp4, video/mov">
+            <video id="video" width="320" height="240" controls style="display: none;">
+            </video> 
+            <br/><br/>
+            <label>Upload relavent file</label>
+            <input 
+            style="background: #0450d5;
+            color: white;
+            line-height: 1.2;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;"
+            accept=".pdf, .docx, .xlsx"
+            type="file" id="file" name="file" accept=".pdf, .docx, .xlsx">
+            <br/>
+            <br/>
+            <div class="field btn">
+                <input style="background: #0450d5;
+                color: white;"type="submit" value="Submit">
+            </div>
+        </form>
+        </div>
+        <script>
+            document.getElementById("input").addEventListener("change", function() {
+            var media = URL.createObjectURL(this.files[0]);
+            var video = document.getElementById("video");
+            video.src = media;
+            video.style.display = "block";
+            video.play();
+            }); 
+        </script>
+        <script src="nav.js"></script>
+    </body>
+</html>

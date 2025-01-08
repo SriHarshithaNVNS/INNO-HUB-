@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/investorhome">Home</a>
+        <a href="/log_out">Logout</a>
+        <a href="/about">About</a>
+    </div>
+    <div class="imgwrapper">
+        <img src="/images/2.jpg">    
+        <h1>Uploaded Documents</h1>
+        <label>Here we find the documents uploaded</label>
+        <ul>
+            {% for item in items %}
+            <li>
+                {{ item[1] }} <!-- Assuming item[1] is the document name -->
+                <form method="post" action="/hide_unhide">
+                    <input type="hidden" name="doc_id" value="{{ item[0] }}"> <!-- Assuming item[0] is the document ID -->
+                    {% if item[2] %} <!-- Assuming item[2] is a boolean indicating if the document is hidden -->
+                    <input type="submit" name="action" value="Unhide">
+                    {% else %}
+                    <input type="submit" name="action" value="Hide">
+                    {% endif %}
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="nav.js"></script>
+</body>
+</html>

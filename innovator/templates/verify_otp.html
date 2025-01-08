@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <div class="homewrapper">
+    <h1>Verify OTP</h1>
+    <br/>
+    <p>An OTP has been sent to {{ email }}</p>
+    <br/>
+    <form method="post" action="/verify">
+        <label for="otp" style="font-size: large;">Enter OTP:</label>
+        <input type="text" id="otp" name="otp" required style="padding: 7px;">
+        <input type="hidden" name="email" value="{{ email }}" style="font-size: large;">
+        <button type="submit" 
+        style="background: #0450d5;
+        color: white;
+        line-height: 1.2;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;">Verify OTP</button>
+    </form>
+    <br/><br/>
+    </div>
+</body>
+</html>
